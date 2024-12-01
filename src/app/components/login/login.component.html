@@ -1,0 +1,20 @@
+<div class="card">
+    <h2>Logowanie</h2>
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" formControlName="email" type="email" />
+      </div>
+  
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Hasło</label>
+        <input id="password" formControlName="password" type="password" />
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="form.invalid">Zaloguj</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,22 @@
+<header>
+    <img src="assets/Preview.png" alt="Preview Image">
+    <nav>
+      <a routerLink="/translator" class="nav-link" routerLinkActive="active">Translator</a>
+      
+      @if (!authService.isLoggedIn()) {
+        <a routerLink="/login" class="nav-link" routerLinkActive="active">Login</a>
+        <a routerLink="/register" class="nav-link" routerLinkActive="active">Register</a>
+      } @else {
+        <a routerLink="/languages" class="nav-link" routerLinkActive="active">Languages</a>
+  
+        @if (authService.isAdmin()) {
+          <a routerLink="/admin-dashboard" class="nav-link" routerLinkActive="active">Admin Panel</a>
+        } @else {
+          <a routerLink="/profile" class="nav-link" routerLinkActive="active">Profile</a>
+        }
+  
+        <button (click)="logout()" class="nav-link">Logout</button>
+      }
+    </nav>
+  </header>
+  

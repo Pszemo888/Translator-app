@@ -1,0 +1,26 @@
+<div class="card">
+    <h2>Register</h2>
+    <form [formGroup]="form" (ngSubmit)="register()">
+        <div>
+          <label for="username">Username</label>
+          <input id="username" formControlName="username" type="text" />
+        </div>
+      
+        <div>
+          <label for="email">Email</label>
+          <input id="email" formControlName="email" type="email" />
+        </div>
+      
+        <div>
+          <label for="password">Password</label>
+          <input id="password" formControlName="password" type="password" />
+        </div>
+      
+        <div [class.hidden]="!successMessage" class="success">{{ successMessage }}</div>
+        <div [class.hidden]="!errorMessage" class="error">{{ errorMessage }}</div>
+      
+        <button type="submit" [disabled]="form.invalid">Register</button>
+      </form>
+      
+  </div>
+  
