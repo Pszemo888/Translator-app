@@ -12,8 +12,10 @@ import { CommonModule } from '@angular/common';
   templateUrl: './read-transtations.component.html',
   styleUrl: './read-transtations.component.css'
 })
-export class ReadTranstationsComponent {
 
+export class ReadTranstationsComponent {
+  public isDialogOpen: boolean = false; // Właściwość publiczna
+  
   translations: Translation[] = [];
 
   form: FormGroup;
@@ -50,10 +52,15 @@ export class ReadTranstationsComponent {
   }
   
   startEditing(translation: Translation) {
+    this.isDialogOpen = true;
     this.editingTranslation = translation;
     this.editForm.patchValue(translation); // Ustaw wartości w formularzu edycji
   }
 
+  closeDialog(): void {         // Metoda publiczna
+    this.isDialogOpen = false;
+    this.editingTranslation = null;
+  }
   // Zapisz zmiany w edytowanym tłumaczeniu
   saveEdit() {
     if (this.editForm.valid && this.editingTranslation) {
@@ -63,7 +70,7 @@ export class ReadTranstationsComponent {
         next: (updated) => {
           console.log('Zaktualizowano tłumaczenie:', updated);
           this.loadTranslations(); // Odśwież listę po aktualizacji
-          this.cancelEdit(); // Anuluj tryb edycji
+          this.closeDialog();
         },
         error: (err) => {
           console.error('Błąd podczas aktualizacji tłumaczenia:', err);
@@ -83,9 +90,5 @@ export class ReadTranstationsComponent {
       },
     });
   }
-  
-  cancelEdit() {
-    // Logika anulowania edycji
-    console.log('Edycja anulowana');
-  }
+ 
 }

@@ -1,7 +1,7 @@
 <div>
   
     <h3>Lista tłumaczeń</h3>
-    <form [formGroup]="editForm" (ngSubmit)="saveEdit()">
+    <form [formGroup]="editForm">
     <table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
       <thead>
         <tr>
@@ -11,6 +11,7 @@
           <th>Język źródłowy</th>
           <th>Język docelowy</th>
           <th>Date</th>
+          <th>Akcje</th>
           <th></th>
         </tr>
       </thead>
@@ -25,10 +26,8 @@
             <td>{{ translation.createdAt | date: 'yyyy-MM-dd HH:mm' }}</td>  <!-- pipe, CommonModule -->
              
               <td>{{ translation._id }}</td>
-              <button (click)="deleteTranslation(translation._id)">Usuń</button>
-           <button (click)="saveEdit()">Zapisz</button>
-           <button (click)="cancelEdit()">Edytuj</button>
-          
+              <button (click)="startEditing(translation)">Edit</button>
+              <button (click)="deleteTranslation(translation._id )">Delete</button>
           </tr>
         }
       </tbody>
@@ -36,3 +35,27 @@
   </form>
   </div>
   
+  <!-- Okno dialogowe -->
+<div class="dialog-overlay" *ngIf="isDialogOpen">
+  <div class="dialog">
+    <h2>Edytuj tłumaczenie</h2>
+    <form [formGroup]="editForm">
+      <label for="sourceText">Tekst źródłowy:</label>
+      <input id="sourceText" formControlName="sourceText" />
+
+      <label for="translatedText">Tekst przetłumaczony:</label>
+      <input id="translatedText" formControlName="translatedText" />
+
+      <label for="sourceLanguage">Język źródłowy:</label>
+      <input id="sourceLanguage" formControlName="sourceLanguage" />
+
+      <label for="targetLanguage">Język docelowy:</label>
+      <input id="targetLanguage" formControlName="targetLanguage" />
+
+      <div class="dialog-actions">
+        <button (click)="closeDialog()" type="button">Anuluj</button>
+        <button (click)="saveEdit()" type="button">Zapisz</button>
+      </div>
+    </form>
+  </div>
+</div>

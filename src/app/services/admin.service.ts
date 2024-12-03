@@ -56,7 +56,7 @@ export class AdminService {
       Authorization: `Bearer ${localStorage.getItem('authToken')}`,
       'Content-Type': 'application/json',
     });
-    return this.http.put<Translation>(`${this.apiUrl}/translations/:id`, translation, { headers });
+    return this.http.put<Translation>(`${this.apiUrl}/translations/${id}`, translation, { headers });
   }
   
   deleteTranslation(id: string): Observable<void> {
