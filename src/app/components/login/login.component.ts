@@ -26,8 +26,9 @@ export class LoginComponent {
         next: (response) => {
           localStorage.setItem('authToken', response.token);
           localStorage.setItem('currentUser', JSON.stringify(response.user));
+          console.log("---------------------------------");
           console.log('Server response:', response);
-         
+          console.log("---------------------------------");
           if (response.user.role === 'admin') {
             this.router.navigate(['/admin-dashboard']);
           } else {

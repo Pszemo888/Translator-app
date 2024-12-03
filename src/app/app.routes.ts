@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { authGuard } from './guards/auth.guard';
 import { AddTranslationComponent } from './components/adminCRUD/add-translation/add-translation.component';
+import { ReadTranstationsComponent  } from './components/adminCRUD/read-transtations/read-transtations.component'; 
 
 export const routes: Routes = [
     {
