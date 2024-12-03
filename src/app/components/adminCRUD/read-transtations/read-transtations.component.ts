@@ -71,7 +71,18 @@ export class ReadTranstationsComponent {
       });
     }
   }
-
+  
+  deleteTranslation(id: string)  {
+    this.adminService.deleteTranslation(id).subscribe({
+      next: () => {
+        console.log(`Tłumaczenie o ID ${id} zostało usunięte.`);
+        this.loadTranslations(); // Odswież listę po usunięciu
+      },
+      error: (err) => {
+        console.error('Błąd podczas usuwania tłumaczenia:', err);
+      },
+    });
+  }
   
   cancelEdit() {
     // Logika anulowania edycji

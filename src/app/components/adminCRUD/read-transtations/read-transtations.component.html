@@ -25,7 +25,7 @@
             <td>{{ translation.createdAt | date: 'yyyy-MM-dd HH:mm' }}</td>  <!-- pipe, CommonModule -->
              
               <td>{{ translation._id }}</td>
-           <button (click)="deleteTranslation(translation._id)">Usuń</button>
+              <button (click)="deleteTranslation(translation._id)">Usuń</button>
            <button (click)="saveEdit()">Zapisz</button>
            <button (click)="cancelEdit()">Edytuj</button>
           

@@ -58,7 +58,14 @@ export class AdminService {
     });
     return this.http.put<Translation>(`${this.apiUrl}/translations/:id`, translation, { headers });
   }
-
-   
+  
+  deleteTranslation(id: string): Observable<void> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+      'Content-Type': 'application/json',
+    });
+  
+    return this.http.delete<void>(`${this.apiUrl}/translations/${id}`, { headers });
+  }
   
 }
