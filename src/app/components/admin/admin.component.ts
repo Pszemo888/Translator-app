@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
+//import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { AdminService} from '../../services/admin.service';
 import { Translation } from '../../models/data.model'; 
-import {FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
 export class AdminComponent {
+
   translations: Translation[] = [];
 
   form: FormGroup;
@@ -37,4 +41,5 @@ export class AdminComponent {
       },
     });
   }
+
 }

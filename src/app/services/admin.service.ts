@@ -3,6 +3,13 @@ import { Translation } from '../models/data.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+type newTranslation = {
+  sourceText: string;
+  translatedText: string;
+  sourceLanguage: string;
+  targetLanguage: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,5 +31,14 @@ export class AdminService {
     });
 
     return this.http.get<Translation[]>(`${this.apiUrl}/translations`, { headers, params });
+  }
+  
+  addTranslation(translation: newTranslation): Observable<Translation> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.post<Translation>(`${this.apiUrl}/translations`, translation, { headers });
   }
 }
