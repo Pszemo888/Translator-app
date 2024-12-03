@@ -16,6 +16,8 @@ import { AddTranslationComponent } from '../adminCRUD/add-translation/add-transl
 })
 export class AdminComponent {
 
+  
+
   getAdminReadTranslations() {
     return ReadTranstationsComponent;
   }
@@ -23,5 +25,6 @@ export class AdminComponent {
   getAdminAddTranslations() {
     return AddTranslationComponent;
   }
+
 
 }
