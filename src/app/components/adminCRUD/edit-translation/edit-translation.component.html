@@ -1,0 +1,8 @@
+<h3>Edytuj Tłumaczenie</h3>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <input formControlName="sourceText" />
+  <input formControlName="translatedText" />
+  <input formControlName="sourceLanguage" />
+  <input formControlName="targetLanguage" />
+  <button type="submit">Zapisz</button>
+</form>

@@ -17,14 +17,21 @@ export class ReadTranstationsComponent {
   translations: Translation[] = [];
 
   form: FormGroup;
+  editForm: FormGroup;
 
+  editingTranslation: Translation | null = null;
 
   constructor(private fb: FormBuilder, private adminService: AdminService) {
     this.form = this.fb.group({
       sourceLanguage: [''],
       targetLanguage: [''],
     });
-
+    this.editForm = this.fb.group({
+      sourceText: ['', Validators.required],
+      translatedText: ['', Validators.required],
+      sourceLanguage: ['', Validators.required],
+      targetLanguage: ['', Validators.required],
+    });
     this.loadTranslations(); // Pobierz wszystkie tłumaczenia przy starcie
   }
 
@@ -41,5 +48,33 @@ export class ReadTranstationsComponent {
       },
     });
   }
+  
+  startEditing(translation: Translation) {
+    this.editingTranslation = translation;
+    this.editForm.patchValue(translation); // Ustaw wartości w formularzu edycji
+  }
 
+  // Zapisz zmiany w edytowanym tłumaczeniu
+  saveEdit() {
+    if (this.editForm.valid && this.editingTranslation) {
+      const updatedTranslation = this.editForm.value;
+
+      this.adminService.updateTranslation(this.editingTranslation._id, updatedTranslation).subscribe({
+        next: (updated) => {
+          console.log('Zaktualizowano tłumaczenie:', updated);
+          this.loadTranslations(); // Odśwież listę po aktualizacji
+          this.cancelEdit(); // Anuluj tryb edycji
+        },
+        error: (err) => {
+          console.error('Błąd podczas aktualizacji tłumaczenia:', err);
+        },
+      });
+    }
+  }
+
+  
+  cancelEdit() {
+    // Logika anulowania edycji
+    console.log('Edycja anulowana');
+  }
 }

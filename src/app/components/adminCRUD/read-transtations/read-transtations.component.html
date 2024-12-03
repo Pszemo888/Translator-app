@@ -1,6 +1,7 @@
 <div>
   
     <h3>Lista tłumaczeń</h3>
+    <form [formGroup]="editForm" (ngSubmit)="saveEdit()">
     <table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
       <thead>
         <tr>
@@ -10,6 +11,7 @@
           <th>Język źródłowy</th>
           <th>Język docelowy</th>
           <th>Date</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -21,9 +23,16 @@
             <td>{{ translation.sourceLanguage }}</td>
             <td>{{ translation.targetLanguage }}</td>
             <td>{{ translation.createdAt | date: 'yyyy-MM-dd HH:mm' }}</td>  <!-- pipe, CommonModule -->
+             
+              <td>{{ translation._id }}</td>
+           <button (click)="deleteTranslation(translation._id)">Usuń</button>
+           <button (click)="saveEdit()">Zapisz</button>
+           <button (click)="cancelEdit()">Edytuj</button>
+          
           </tr>
         }
       </tbody>
     </table>
+  </form>
   </div>
   
