@@ -6,4 +6,10 @@ export interface Translation {
     targetLanguage: string;
     createdAt: string;
   }
-  
+
+export interface Language{
+  _id: string;
+  code: string;
+  name: string;
+  nativeName: string;
+}  
