@@ -1,4 +1,8 @@
 <div>
-  <ng-container *ngComponentOutlet="getAdminAddTranslations()"></ng-container>
+  <div class="add-container">
+    <ng-container *ngComponentOutlet="getAdminAddTranslations()"></ng-container>
+    <ng-container *ngComponentOutlet="getAdminAddLanguages()"></ng-container>
+  </div>
+  <ng-container *ngComponentOutlet="getAdminReadLanguages()"></ng-container>
   <ng-container *ngComponentOutlet="getAdminReadTranslations()"></ng-container>
 </div>

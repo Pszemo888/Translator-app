@@ -1,0 +1,29 @@
+<div class="languages-container">
+    <h3>Languages list</h3>
+    <form [formGroup]="form">
+    <table border="1" class="languages-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Native name</th>     
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+          @for (language of languages;  track $index){    
+          <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ language.code }}</td>
+            <td>{{ language.name }}</td>
+            <td>{{ language.nativeName }}</td>
+            <td>
+              <button (click)="deleteLanguage(language._id)">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </form>
+  </div>

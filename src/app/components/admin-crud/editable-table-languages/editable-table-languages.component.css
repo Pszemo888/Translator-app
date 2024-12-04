@@ -1,4 +1,4 @@
-.translations-container {
+.languages-container {
     margin: 40px auto;
     padding: 20px;
     background-color: #ffffff;
@@ -7,18 +7,18 @@
     width: 95%;
 }
 
-/* .translations-table {
+/* .languages-table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
     border-radius: 5px;
 }
 
-.translations-table th, td {
+.languages-table th, td {
     padding: 5px;
 } */
 
-.translations-table {
+.languages-table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
@@ -27,12 +27,12 @@
     overflow: hidden; /* Aby rogi działały poprawnie */
 }
 
-.translations-table th, .translations-table td {
+.languages-table th, .languages-table td {
     padding: 5px;
     border: 1px solid #555; /* Drobne obramowanie między komórkami */
 }
 
-.translations-table th {
+.languages-table th {
     font-weight: bold;
 }
 
