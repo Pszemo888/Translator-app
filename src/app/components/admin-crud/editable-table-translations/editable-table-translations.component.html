@@ -1,0 +1,62 @@
+<div class="translations-container">
+  
+    <h3>Translations list</h3>
+    <form [formGroup]="editForm">
+    <table border="1" class="translations-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Source text</th>
+          <th>Translated text</th>
+          <th>Source language</th>
+          <th>Target language</th>
+          <th>Creation date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+          @for (translation of translations;  track $index){    
+          <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ translation.sourceText }}</td>
+            <td>{{ translation.translatedText }}</td>
+            <td>{{ translation.sourceLanguage }}</td>
+            <td>{{ translation.targetLanguage }}</td>
+            <td>{{ translation.createdAt | date: 'yyyy-MM-dd HH:mm' }}</td>  
+              <td>
+                <button (click)="startEditing(translation)">Edit</button>
+                <button (click)="deleteTranslation(translation._id )">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </form>
+  </div>
+  
+
+@if (isDialogOpen) {
+  <div class="dialog-overlay">
+    <div class="dialog">
+      <h2>Edit translations</h2>
+      <form [formGroup]="editForm">
+        <label for="sourceText">Source text</label>
+        <input id="sourceText" formControlName="sourceText" />
+
+        <label for="translatedText">Translated text</label>
+        <input id="translatedText" formControlName="translatedText" />
+
+        <label for="sourceLanguage">Source language</label>
+        <input id="sourceLanguage" formControlName="sourceLanguage" />
+
+        <label for="targetLanguage">Target language</label>
+        <input id="targetLanguage" formControlName="targetLanguage" />
+
+        <div class="dialog-actions">
+          <button (click)="closeDialog()" type="button">Anuluj</button>
+          <button (click)="saveEdit()" type="button">Zapisz</button>
+        </div>
+      </form>
+    </div>
+  </div>
+}

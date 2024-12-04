@@ -1,0 +1,131 @@
+.translations-container {
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 95%;
+}
+
+.translations-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    border-radius: 5px;
+}
+
+.translations-table th, td {
+    padding: 5px;
+}
+
+button {
+    border-radius: 5px;
+    border: none;
+    background-color: #5566c5;
+    padding: 4px 12px ;
+    color: #fff;
+    transition: 0.1s;
+    cursor:pointer;
+    margin-left: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+button:hover {
+    background-color: #5c6cc5;
+    /* transform: scale(1.02); */
+    color: #a4aacd;
+}
+
+.dialog-overlay {
+    position: fixed; /* Pozwala ustawić pozycję niezależnie od scrollowania */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Czarny z 50% przezroczystością */
+    display: flex; /* Środek dzięki flexbox */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Na wierzchu innych elementów */
+}
+  
+  /* Okno dialogowe */
+.dialog {
+    background-color: #fff;
+    padding: 20px;
+    max-width: 500px;
+    width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1010; 
+}
+
+.dialog h2 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+.dialog form div {
+    margin-bottom: 15px;
+}
+
+.dialog label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #050712;;
+}
+
+.dialog input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 20px;
+}
+
+
+
+    /* #5566c5;
+    #a4aacd; */
+
+
+/* Efekt focus na polach */
+.dialog input:focus {
+    border-color: #5566c5;
+    box-shadow: 0 0 5px #5566c5;
+    outline: none;
+}
+
+/* Przycisk */
+.dialog button {
+    width: 20%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #5566c5;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-left: 0;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Efekt hover na przycisku */
+.dialog button:hover {
+    background-color: #5c6cc5;
+    color: #a4aacd;
+}
+  
+
+

@@ -6,7 +6,6 @@
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
   }
   
   /* Nagłówek */
@@ -63,7 +62,7 @@
   /* Efekt hover na przycisku */
   .card button:hover {
     background-color: #0056b3;
-    transform: scale(1.02);
+    color: #a4aacd;
   }
   
   /* Wyłączenie przycisku */

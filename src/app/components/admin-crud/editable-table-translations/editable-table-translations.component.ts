@@ -9,11 +9,11 @@ import { CommonModule } from '@angular/common';
   selector: 'app-admin',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './read-transtations.component.html',
-  styleUrl: './read-transtations.component.css'
+  templateUrl: './editable-table-translations.component.html',
+  styleUrl: './editable-table-translations.component.css'
 })
 
-export class ReadTranstationsComponent {
+export class EditableTableTranslationComponent {
   public isDialogOpen: boolean = false; // Właściwość publiczna
   
   translations: Translation[] = [];
@@ -55,11 +55,13 @@ export class ReadTranstationsComponent {
     this.isDialogOpen = true;
     this.editingTranslation = translation;
     this.editForm.patchValue(translation); // Ustaw wartości w formularzu edycji
+    document.body.classList.add('no-scroll');
   }
 
   closeDialog(): void {         // Metoda publiczna
     this.isDialogOpen = false;
     this.editingTranslation = null;
+    document.body.classList.remove('no-scroll');
   }
   // Zapisz zmiany w edytowanym tłumaczeniu
   saveEdit() {

@@ -1,13 +1,12 @@
 /* Karta główna */
 .card {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-  }
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
   
   /* Nagłówek */
   .card h2 {
@@ -26,7 +25,7 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #555555;
+    color: #050712;;
   }
   
   .card input {
@@ -39,10 +38,16 @@
     transition: border-color 0.3s, box-shadow 0.3s;
   }
   
+  
+
+    /* #5566c5;
+    #a4aacd; */
+
+
   /* Efekt focus na polach */
   .card input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #5566c5;
+    box-shadow: 0 0 5px #5566c5;
     outline: none;
   }
   
@@ -53,7 +58,7 @@
     font-size: 16px;
     font-weight: bold;
     color: #ffffff;
-    background-color: #007bff;
+    background-color: #5566c5;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -62,14 +67,15 @@
   
   /* Efekt hover na przycisku */
   .card button:hover {
-    background-color: #0056b3;
-    transform: scale(1.02);
+    background-color: #5c6cc5;
+    color: #a4aacd;
   }
   
   /* Wyłączenie przycisku */
   .card button:disabled {
-    background-color: #cccccc;
+    background-color: #a4aacd;
     cursor: not-allowed;
+    color: #5c6cc5;
   }
   
   /* Wiadomości sukcesu i błędów */

@@ -1,0 +1,23 @@
+<div class="card">
+  <h3>Add new translation</h3>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div>
+      <label for="sourceText">Source text</label>
+      <input id="sourceText" formControlName="sourceText" type="text" />
+    </div>
+    <div>
+      <label for="translatedText">Translated text</label>
+      <input id="translatedText" formControlName="translatedText" type="text" />
+    </div>
+    <div>
+      <label for="sourceLanguage">Source language</label>
+      <input id="sourceLanguage" formControlName="sourceLanguage" type="text" />
+    </div>
+    <div>
+      <label for="targetLanguage">Target language</label>
+      <input id="targetLanguage" formControlName="targetLanguage" type="text" />
+    </div>
+    <button type="submit" [disabled]="form.invalid">Add translation</button>
+  </form>
+</div>
+  
