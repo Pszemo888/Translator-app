@@ -2,9 +2,11 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ReadTranstationsComponent } from '../adminCRUD/read-transtations/read-transtations.component';
-import { AddTranslationComponent } from '../adminCRUD/add-translation/add-translation.component';
-import { EditTranslationComponent } from '../adminCRUD/edit-translation/edit-translation.component';
+import { EditableTableTranslationComponent } from '../admin-crud/editable-table-translations/editable-table-translations.component';
+import { AddTranslationComponent } from '../admin-crud/add-translation/add-translation.component';
+import { AddLanguageComponent } from '../admin-crud/add-language/add-language.component';
+import { TableLanguagesComponent } from '../admin-crud/editable-table-languages/editable-table-languages.component';
+
 @Component({
   selector: 'app-admin',
   standalone: true,
@@ -13,19 +15,20 @@ import { EditTranslationComponent } from '../adminCRUD/edit-translation/edit-tra
   styleUrl: './admin.component.css'
 })
 export class AdminComponent {
-
-
   getAdminReadTranslations() {
-    return ReadTranstationsComponent;
+    return EditableTableTranslationComponent;
   }
 
   getAdminAddTranslations() {
     return AddTranslationComponent;
   }
 
-  getAdminEditTranslation(){
-    return EditTranslationComponent;
+  getAdminAddLanguages() {
+    return AddLanguageComponent;
   }
 
+  getAdminReadLanguages(){
+    return TableLanguagesComponent;
+  }
 
 }
