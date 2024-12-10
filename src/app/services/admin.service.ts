@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Translation } from '../models/data.model';
+import { Translation, Language } from '../models/data.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -8,6 +8,12 @@ type newTranslation = {
   translatedText: string;
   sourceLanguage: string;
   targetLanguage: string;
+}
+
+type newLanguage = {
+  code: string;
+  name: string;
+  nativeName: string;
 }
 
 @Injectable({
@@ -67,5 +73,29 @@ export class AdminService {
   
     return this.http.delete<void>(`${this.apiUrl}/translations/${id}`, { headers });
   }
+
+  getLanguages(): Observable<Language[]> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+      'Content-Type': 'application/json',
+    });
+    return this.http.get<Language[]>(`${this.apiUrl}/languages`, { headers });
+  }
+  addLanguage(language: newLanguage): Observable<{ message: string }> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+      'Content-Type': 'application/json',
+    });
+  
+    return this.http.post<{ message: string }>(`${this.apiUrl}/languages`, language, { headers });
+  }
+  deleteLanguage(id: string): Observable<{ message: string }> {
+      const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+      'Content-Type': 'application/json',
+    });
+    return this.http.delete<{ message: string }>(`${this.apiUrl}/languages/${id}`, { headers });
+  }
+
   
 }

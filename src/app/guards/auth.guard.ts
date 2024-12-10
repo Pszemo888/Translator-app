@@ -7,6 +7,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
+  
   // Sprawdź, czy użytkownik jest zalogowany
   if (!authService.isLoggedIn()) {
     router.navigate(['/login']);
@@ -17,7 +18,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   const requiredRole = route.data['role'];
   const currentUser = authService.getCurrentUser(); // Metoda zwracająca dane użytkownika
   if (requiredRole && currentUser.role !== requiredRole) {
-    router.navigate(['/unauthorized']); // Opcjonalna strona "Brak dostępu"
     return false;
   }
 
