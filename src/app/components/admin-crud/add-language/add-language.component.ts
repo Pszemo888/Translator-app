@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./add-language.component.css'],
 })
 export class AddLanguageComponent {
-  @Output() languageAdded = new EventEmitter<void>(); // Emit event after successful addition
+  @Output() languageAdded = new EventEmitter<void>(); 
   form: FormGroup;
 
   constructor(private fb: FormBuilder, private adminService: AdminService) {
@@ -30,6 +30,7 @@ export class AddLanguageComponent {
         next: (language) => {
           console.log(language); // Wyświetli wiadomość sukcesu
           this.form.reset();
+          this.adminService.triggerReloadTranslations();
         },
         error: (err) => {
           console.error('Błąd podczas dodawania języka:', err);

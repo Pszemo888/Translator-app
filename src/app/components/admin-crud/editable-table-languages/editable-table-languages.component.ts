@@ -25,6 +25,9 @@ export class TableLanguagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadLanguages();
+    this.adminService.reloadTranslations$.subscribe(() => {
+      this.loadLanguages(); 
+    });
   }
 
   loadLanguages(): void {

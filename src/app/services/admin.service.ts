@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Translation, Language } from '../models/data.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 type newTranslation = {
   sourceText: string;
@@ -21,6 +21,8 @@ type newLanguage = {
 })
 export class AdminService {
   private apiUrl = 'http://localhost:3000/api';
+  private reloadTranslationsSubject = new Subject<void>();
+  reloadTranslations$ = this.reloadTranslationsSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -29,6 +31,9 @@ export class AdminService {
       Authorization: `Bearer ${localStorage.getItem('authToken')}`,
       'Content-Type': 'application/json',
     });
+  }
+  triggerReloadTranslations() {
+    this.reloadTranslationsSubject.next();
   }
 
   getTranslations(sourceLanguage?: string, targetLanguage?: string):  Observable<Translation[]> {
