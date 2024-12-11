@@ -37,6 +37,12 @@ export class EditableTableTranslationComponent {
     this.loadTranslations(); // Pobierz wszystkie tłumaczenia przy starcie
   }
 
+  ngOnInit(): void {
+    this.adminService.reloadTranslations$.subscribe(() => {
+      this.loadTranslations(); 
+    });
+  }
+
   // Pobierz tłumaczenia z opcjonalnymi filtrami
   loadTranslations() {
     const { sourceLanguage, targetLanguage } = this.form.value; // Pobierz dane z formularza

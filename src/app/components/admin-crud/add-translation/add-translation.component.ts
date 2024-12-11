@@ -33,6 +33,7 @@ export class AddTranslationComponent {
           console.log('Dodano tłumaczenie:', translation);
           this.translationAdded.emit(translation); // Emituj zdarzenie do rodzica
           this.form.reset(); // Resetuj formularz po udanym dodaniu
+          this.adminService.triggerReloadTranslations();
         },
         error: (err) => {
           console.error('Błąd podczas dodawania tłumaczenia:', err);

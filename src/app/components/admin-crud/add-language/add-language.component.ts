@@ -30,7 +30,8 @@ export class AddLanguageComponent {
         next: (language) => {
           console.log(language); // Wyświetli wiadomość sukcesu
           this.form.reset();
-          this.adminService.triggerReloadTranslations();
+          //this.adminService.triggerReloadTranslations();
+          this.adminService.triggerReloadLanguages();
         },
         error: (err) => {
           console.error('Błąd podczas dodawania języka:', err);

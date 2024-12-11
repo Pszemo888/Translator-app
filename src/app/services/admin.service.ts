@@ -21,7 +21,9 @@ type newLanguage = {
 })
 export class AdminService {
   private apiUrl = 'http://localhost:3000/api';
+  private reloadLanguagesSubject = new Subject<void>();
   private reloadTranslationsSubject = new Subject<void>();
+  reloadLanguages$ = this.reloadLanguagesSubject.asObservable();
   reloadTranslations$ = this.reloadTranslationsSubject.asObservable();
 
   constructor(private http: HttpClient) {}
@@ -31,6 +33,9 @@ export class AdminService {
       Authorization: `Bearer ${localStorage.getItem('authToken')}`,
       'Content-Type': 'application/json',
     });
+  }
+  triggerReloadLanguages() {
+    this.reloadLanguagesSubject.next();
   }
   triggerReloadTranslations() {
     this.reloadTranslationsSubject.next();
