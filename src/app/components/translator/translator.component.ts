@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TranslationService } from '../../services/translation.service';
-
+import { UserService } from '../../services/user.service';
+import { Translation } from '../../models/data.model';
+import  { TranslationResponse } from '../../services/translation.service';
 @Component({
   selector: 'app-translator',
   standalone: true,
@@ -15,7 +17,7 @@ export class TranslatorComponent {
   languages: { code: string; name: string; nativeName: string }[] = []; // <- Deklaracja tej właściwości
   translatedText: string = '';
 
-  constructor(private fb: FormBuilder, private translationService: TranslationService) {
+  constructor(private fb: FormBuilder, private translationService: TranslationService, private userService: UserService) {
     this.form = this.fb.group({
       sourceText: ['', Validators.required],
       sourceLanguage: ['', Validators.required],
@@ -37,23 +39,38 @@ export class TranslatorComponent {
     });
   }
 
-  // Funkcja do tłumaczenia
   translate() {
     if (this.form.valid) {
       const { sourceText, sourceLanguage, targetLanguage } = this.form.value;
       const request = { sourceText, sourceLanguage, targetLanguage };
-
-      this.translationService.translateText(request).subscribe({
-        next: (response) => {
+  
+      // Definiowanie nagłówków
+      const headers = {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'Content-Type': 'application/json'
+      };
+  
+      this.translationService.translateText(request, headers).subscribe({
+        next: (response: TranslationResponse) => {
           this.translatedText = response.translatedText;
+  
+          const newTranslation: Translation = {
+            _id: response._id,
+            sourceText: response.sourceText,
+            translatedText: response.translatedText,
+            sourceLanguage: response.sourceLanguage,
+            targetLanguage: response.targetLanguage,
+            createdAt: new Date().toISOString()
+          };
         },
         error: (err) => {
-          console.error('Translation error', err);
-          this.translatedText = 'Translation not found'
-        },
+          console.error('Translation error:', err);
+          this.translatedText = 'Translation error occurred';
+        }
       });
     }
   }
+  
   swapLanguages() {
     const sourceLanguage = this.form.get('sourceLanguage')?.value;
     const targetLanguage = this.form.get('targetLanguage')?.value;

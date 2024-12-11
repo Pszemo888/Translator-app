@@ -10,6 +10,7 @@ export interface TranslationRequest {
 }
 
 export interface TranslationResponse {
+  _id: string;
   sourceText: string;
   translatedText: string;
   sourceLanguage: string;
@@ -25,8 +26,9 @@ export class TranslationService {
   constructor(private http: HttpClient) {}
 
   // Metoda do tłumaczenia tekstu
-  translateText(request: TranslationRequest): Observable<TranslationResponse> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  translateText(request: TranslationRequest, customHeaders: { [key: string]: string }): Observable<TranslationResponse> {
+    const headers = new HttpHeaders(customHeaders);
+  
     return this.http.post<TranslationResponse>(`${this.apiUrl}/translations/translate`, request, { headers });
   }
 

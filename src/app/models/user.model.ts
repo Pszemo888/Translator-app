@@ -1,3 +1,4 @@
+import { Translation } from './data.model';
   export interface UserRegistrationResponse {
     id: number;
     username: string;
@@ -8,6 +9,7 @@
     id: string;
     username: string;
     role: string;
+    translations: Translation[];
   }
   
   export interface UserLoginResponse {
