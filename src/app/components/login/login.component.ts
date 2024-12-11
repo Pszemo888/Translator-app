@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   form: FormGroup;
+  errorMessage: string | null = null;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.form = this.fb.group({
@@ -26,9 +27,7 @@ export class LoginComponent {
         next: (response) => {
           localStorage.setItem('authToken', response.token);
           localStorage.setItem('currentUser', JSON.stringify(response.user));
-          console.log("---------------------------------");
-          console.log('Server response:', response);
-          console.log("---------------------------------");
+          this.errorMessage = null;
           if (response.user.role === 'admin') {
             this.router.navigate(['/admin-dashboard']);
           } else {
@@ -36,10 +35,19 @@ export class LoginComponent {
           }
       
         },
-        error: () => {
-          console.error('Niepoprawny email lub hasło.');
+        error: (error) => {
+          console.error('Login failed:', error);
+          if (error.status === 400) {
+            this.errorMessage = 'Invalid email or password.';
+          } else if (error.status === 500) {
+            this.errorMessage = 'Server error. Please try again later.';
+          } else {
+            this.errorMessage = 'Something went wrong. Please try again.';
+          }
         },
       });
+    } else {
+      this.errorMessage = 'Please fill in all required fields.';
     }
-  }
+}
 }

@@ -52,7 +52,7 @@
     font-size: 16px;
     font-weight: bold;
     color: #ffffff;
-    background-color: #007bff;
+    background-color: #5566c5;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -61,14 +61,15 @@
   
   /* Efekt hover na przycisku */
   .card button:hover {
-    background-color: #0056b3;
+    background-color: #5c6cc5;
     color: #a4aacd;
   }
   
   /* Wyłączenie przycisku */
   .card button:disabled {
-    background-color: #cccccc;
+    background-color: #a4aacd;
     cursor: not-allowed;
+    color: #5c6cc5;
   }
   
   /* Wiadomości sukcesu i błędów */
