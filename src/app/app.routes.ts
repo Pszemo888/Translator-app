@@ -33,7 +33,7 @@ export const routes: Routes = [
       path: 'users/profile',
       component: UserComponent,
       canActivate: [authGuard],
-      data: { role: 'user' }
+      // data: { role: 'user' || 'admin' }
     },
     {
       path: '',

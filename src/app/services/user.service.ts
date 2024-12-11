@@ -23,14 +23,14 @@ import { Translation } from '../models/data.model';
         tap(profile => this.userProfileSubject.next(profile))
       );
     }
-    addTranslation(translation: Translation): Observable<User> {
-        const headers = new HttpHeaders({
-          'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
-          'Content-Type': 'application/json',
-        });
+    // addTranslation(translation: Translation): Observable<User> {
+    //     const headers = new HttpHeaders({
+    //       'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+    //       'Content-Type': 'application/json',
+    //     });
       
-        return this.http.post<User>(`${this.apiUrl}/profile/translations`, translation, { headers }).pipe(
-          tap((updatedUser) => this.userProfileSubject.next(updatedUser)) // Zaktualizuj dane użytkownika w aplikacji
-        );
-      }
+    //     return this.http.post<User>(`${this.apiUrl}/profile/translations`, translation, { headers }).pipe(
+    //       tap((updatedUser) => this.userProfileSubject.next(updatedUser)) // Zaktualizuj dane użytkownika w aplikacji
+    //     );
+    //   }
   }
