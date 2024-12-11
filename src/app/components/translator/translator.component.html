@@ -1,5 +1,5 @@
 <div class="translator-container">
-  <h3>Tłumacz tekst</h3>
+  <h3>Translate text</h3>
 
   <form [formGroup]="form" (ngSubmit)="translate()">
     <div class="translation-panel">
@@ -42,7 +42,7 @@
         <textarea
           id="translatedText"
           readonly
-          [value]="translatedText || 'Translated text'"
+          [value]="translatedText || ' '"
         ></textarea>
       </div>
     </div>

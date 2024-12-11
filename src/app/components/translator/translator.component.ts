@@ -48,7 +48,8 @@ export class TranslatorComponent {
           this.translatedText = response.translatedText;
         },
         error: (err) => {
-          console.error('Błąd podczas tłumaczenia:', err);
+          console.error('Translation error', err);
+          this.translatedText = 'Translation not found'
         },
       });
     }
