@@ -1,4 +1,4 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component,  OnInit, Output, EventEmitter  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AdminService } from '../../../services/admin.service';
@@ -12,7 +12,9 @@ import { Language} from '../../../models/data.model';
   styleUrl: './editable-table-languages.component.css'
 })
 export class TableLanguagesComponent implements OnInit {
+  @Output() languagesLoaded = new EventEmitter<Language[]>(); 
   languages: Language[] = [];
+
   form: FormGroup;
   sortKey: string = 'name';
   sortDirection: 'asc' | 'desc' = 'asc'; 
@@ -54,8 +56,9 @@ export class TableLanguagesComponent implements OnInit {
   loadLanguages(): void {
     this.adminService.getLanguages().subscribe({
       next: (languages) => {
+        console.log('Otrzymane języki z API:', languages);
         this.languages = languages;
-        console.log('Pobrane języki:', this.languages);
+        this.languagesLoaded.emit(this.languages);
       },
       error: (err) => {
         console.error('Błąd podczas pobierania języków:', err);

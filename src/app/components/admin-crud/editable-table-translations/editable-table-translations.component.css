@@ -147,3 +147,15 @@ button:hover {
   
 
 
+th {
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  th.active-asc::after {
+    content: ' ▲';
+  }
+  
+  th.active-desc::after {
+    content: ' ▼';
+  }

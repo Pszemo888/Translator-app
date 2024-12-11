@@ -3,6 +3,7 @@
     <ng-container *ngComponentOutlet="getAdminAddTranslations()"></ng-container>
     <ng-container *ngComponentOutlet="getAdminAddLanguages()"></ng-container>
   </div>
-  <ng-container *ngComponentOutlet="getAdminReadLanguages()"></ng-container>
-  <ng-container *ngComponentOutlet="getAdminReadTranslations()"></ng-container>
+  <app-table-languages (languagesLoaded)="onLanguagesLoaded($event)"></app-table-languages>
+  <app-table-translations [languages]="languages"></app-table-translations>
+ 
 </div>
