@@ -144,6 +144,19 @@ button:hover {
     background-color: #5c6cc5;
     color: #a4aacd;
 }
+
+.languages-table th {
+    cursor: pointer;
+  }
+  
+  .languages-table th.active-asc::after {
+    content: ' ▲';
+  }
+  
+  .languages-table th.active-desc::after {
+    content: ' ▼';
+  }
+  
   
 
 

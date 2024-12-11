@@ -5,9 +5,19 @@
       <thead>
         <tr>
           <th>ID</th>
-          <th>Code</th>
-          <th>Name</th>
-          <th>Native name</th>     
+          <th 
+            [class.active-asc]="sortKey === 'code' && sortDirection === 'asc'" 
+            [class.active-desc]="sortKey === 'code' && sortDirection === 'desc'" 
+            (click)="sortTable('code')">
+            Code
+          </th>
+          <th 
+            [class.active-asc]="sortKey === 'name' && sortDirection === 'asc'" 
+            [class.active-desc]="sortKey === 'name' && sortDirection === 'desc'" 
+            (click)="sortTable('name')">
+            Name
+          </th>
+          <th>Native name</th>  
           <th></th>
         </tr>
       </thead>

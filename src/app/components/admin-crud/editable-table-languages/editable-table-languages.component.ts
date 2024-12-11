@@ -14,6 +14,8 @@ import { Language} from '../../../models/data.model';
 export class TableLanguagesComponent implements OnInit {
   languages: Language[] = [];
   form: FormGroup;
+  sortKey: string = 'name';
+  sortDirection: 'asc' | 'desc' = 'asc'; 
 
   constructor(private fb: FormBuilder, private adminService: AdminService) {
     this.form = this.fb.group({
@@ -30,7 +32,23 @@ export class TableLanguagesComponent implements OnInit {
     });
   }
 
+  sortTable(key: string): void {
+    if (this.sortKey === key) {
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.sortKey = key;
+      this.sortDirection = 'asc';
+    }
 
+    this.languages.sort((a: Language, b: Language) => {
+      const valueA = String(a[key as keyof Language] || '').toLowerCase(); 
+      const valueB = String(b[key as keyof Language] || '').toLowerCase();
+
+      if (valueA < valueB) return this.sortDirection === 'asc' ? -1 : 1;
+      if (valueA > valueB) return this.sortDirection === 'asc' ? 1 : -1;
+      return 0;
+    });
+  }
 
   
   loadLanguages(): void {
@@ -49,7 +67,7 @@ export class TableLanguagesComponent implements OnInit {
     this.adminService.deleteLanguage(id).subscribe({
       next: () => {
         console.log(`Język o kodzie ${id} został usunięty.`);
-        this.loadLanguages(); // Odśwież listę po usunięciu
+        this.loadLanguages(); 
       },
       error: (err) => {
         console.error('Błąd podczas usuwania języka:', err);
