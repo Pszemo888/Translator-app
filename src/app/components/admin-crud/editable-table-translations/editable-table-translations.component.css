@@ -7,29 +7,18 @@
     width: 95%;
 }
 
-/* .translations-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    border-radius: 5px;
-}
-
-.translations-table th, td {
-    padding: 5px;
-} */
-
 .translations-table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
-    border: 1px solid #555; /* Szare obramowanie */
-    border-radius: 8px; /* Zaokrąglone rogi */
-    overflow: hidden; /* Aby rogi działały poprawnie */
+    border: 1px solid #555; 
+    border-radius: 8px; 
+    overflow: hidden; 
 }
 
 .translations-table th, .translations-table td {
     padding: 5px;
-    border: 1px solid #555; /* Drobne obramowanie między komórkami */
+    border: 1px solid #555;
 }
 
 .translations-table th {
@@ -50,24 +39,22 @@ button {
   
 button:hover {
     background-color: #5c6cc5;
-    /* transform: scale(1.02); */
     color: #a4aacd;
 }
 
 .dialog-overlay {
-    position: fixed; /* Pozwala ustawić pozycję niezależnie od scrollowania */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* Czarny z 50% przezroczystością */
-    display: flex; /* Środek dzięki flexbox */
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex; 
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Na wierzchu innych elementów */
+    z-index: 1000; 
 }
   
-  /* Okno dialogowe */
 .dialog {
     background-color: #fff;
     padding: 20px;
@@ -112,23 +99,14 @@ select {
     margin-bottom: 20px;
     border-radius: 8px;
     border: 1px solid #ccc;
-  }
+}
   
-
-
-
-    /* #5566c5;
-    #a4aacd; */
-
-
-/* Efekt focus na polach */
 .dialog input:focus {
     border-color: #5566c5;
     box-shadow: 0 0 5px #5566c5;
     outline: none;
 }
 
-/* Przycisk */
 .dialog button {
     width: 20%;
     padding: 12px;
@@ -148,13 +126,11 @@ select {
     justify-content: space-between;
 }
 
-/* Efekt hover na przycisku */
 .dialog button:hover {
     background-color: #5c6cc5;
     color: #a4aacd;
 }
   
-
 
 th {
     cursor: pointer;

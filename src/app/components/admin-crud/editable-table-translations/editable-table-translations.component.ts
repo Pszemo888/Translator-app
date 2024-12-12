@@ -57,10 +57,10 @@ export class EditableTableTranslationComponent {
     this.adminService.getTranslations(sourceLanguage, targetLanguage).subscribe({
       next: (translations) => {
         this.translations = translations;
-        console.log('Pobrane tłumaczenia:', this.translations);
+        console.log('Translation:', this.translations);
       },
       error: (err) => {
-        console.error('Błąd podczas pobierania tłumaczeń:', err);
+        console.error('Error fetching translation:', err);
       },
     });
   }
@@ -124,13 +124,13 @@ export class EditableTableTranslationComponent {
 
       this.adminService.updateTranslation(this.editingTranslation._id, updatedTranslation).subscribe({
         next: (updated) => {
-          console.log('Zaktualizowano tłumaczenie:', updated);
+          console.log('Updated translation:', updated);
           this.loadTranslations(); 
           this.closeDialog();
           this.errorMessage = null; 
         },
         error: (err) => {
-          console.error('Błąd podczas aktualizacji tłumaczenia:', err);
+          console.error('Update translation error:', err);
           this.errorMessage = 'Error while updating the translation. Please try again.';
         },
       });
@@ -140,8 +140,7 @@ export class EditableTableTranslationComponent {
   }
 
   getLanguageCode(languageName: string): string {
-    console.log('Sprawdzany język:', languageName);
-    console.log('Dostępne języki:', this.languages);
+    console.log('Avaiable languages:', this.languages);
     
     const language = this.languages.find(
       (lang) => lang.name === languageName || lang.code === languageName
@@ -152,11 +151,11 @@ export class EditableTableTranslationComponent {
   deleteTranslation(id: string)  {
     this.adminService.deleteTranslation(id).subscribe({
       next: () => {
-        console.log(`Tłumaczenie o ID ${id} zostało usunięte.`);
+        console.log(`Translation with ID ${id} was removed.`);
         this.loadTranslations(); 
       },
       error: (err) => {
-        console.error('Błąd podczas usuwania tłumaczenia:', err);
+        console.error('Error while deleting translation:', err);
       },
     });
   }

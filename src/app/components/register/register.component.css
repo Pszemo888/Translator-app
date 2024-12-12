@@ -1,4 +1,3 @@
-/* Karta główna */
 .card {
     max-width: 500px;
     margin: 40px auto;
@@ -6,89 +5,81 @@
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
+}
   
-  /* Nagłówek */
-  .card h2 {
-    text-align: center;
-    color: #333333;
-    margin-bottom: 20px;
-    font-size: 24px;
-  }
-  
-  /* Pola formularza */
-  .card form div {
-    margin-bottom: 15px;
-  }
-  
-  .card label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555555;
-  }
-  
-  .card input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #dddddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  
-  /* Efekt focus na polach */
-  .card input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    outline: none;
-  }
-  
-  /* Przycisk */
-  .card button {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #5566c5;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  /* Efekt hover na przycisku */
-  .card button:hover {
-    background-color: #5c6cc5;
-    color: #a4aacd;
-  }
-  
-  /* Wyłączenie przycisku */
-  .card button:disabled {
-    background-color: #a4aacd;
-    cursor: not-allowed;
-    color: #5c6cc5;
-  }
-  
-  /* Wiadomości sukcesu i błędów */
-  .card .success {
-    color: #28a745;
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  .card .error {
-    color: #dc3545;
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  /* Ukryte wiadomości */
-  .hidden {
-    display: none;
-  }
+.card h2 {
+  text-align: center;
+  color: #333333;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.card form div {
+  margin-bottom: 15px;
+}
+
+.card label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555555;
+}
+
+.card input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.card input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.card button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #5566c5;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.card button:hover {
+  background-color: #5c6cc5;
+  color: #a4aacd;
+}
+
+.card button:disabled {
+  background-color: #a4aacd;
+  cursor: not-allowed;
+  color: #5c6cc5;
+}
+
+.card .success {
+  color: #28a745;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.card .error {
+  color: #dc3545;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
   

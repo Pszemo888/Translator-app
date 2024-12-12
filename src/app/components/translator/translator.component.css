@@ -1,76 +1,76 @@
 .translator-container {
-    width: 100%;
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .translation-panel {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .input-section,
-  .output-section {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .language-select {
-    margin-bottom: 12px;
-  }
-  
-  select {
-    padding: 8px;
-    font-size: 14px;
-    margin-left: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  
-  textarea {
-    height: 150px;
-    padding: 10px;
-    font-size: 14px;
-    resize: none;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  
-  .arrow-section {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-    color: #555;
-  }
-  
-  button {
-    width: 120px;
-    padding: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #5566c5;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-  }
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-  button:hover {
-    background-color: #5c6cc5;
-    color: #a4aacd;
-  }
-  
-  button:disabled {
-    background-color: #a4aacd;
-    color: #5c6cc5;
-    cursor: not-allowed;
-  }
+.translation-panel {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.input-section,
+.output-section {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+
+.language-select {
+  margin-bottom: 12px;
+}
+
+select {
+  padding: 8px;
+  font-size: 14px;
+  margin-left: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+textarea {
+  height: 150px;
+  padding: 10px;
+  font-size: 14px;
+  resize: none;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.arrow-section {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  color: #555;
+}
+
+button {
+  width: 120px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #5566c5;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #5c6cc5;
+  color: #a4aacd;
+}
+
+button:disabled {
+  background-color: #a4aacd;
+  color: #5c6cc5;
+  cursor: not-allowed;
+}
   

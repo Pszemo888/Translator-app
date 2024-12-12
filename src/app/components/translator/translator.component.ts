@@ -34,7 +34,7 @@ export class TranslatorComponent {
         this.languages = langs; 
       },
       error: (err) => {
-        console.error('Błąd podczas pobierania języków:', err);
+        console.error('Error fetching languages', err);
       },
     });
   }
