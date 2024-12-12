@@ -21,7 +21,7 @@ export const routes: Routes = [
       path: 'admin-dashboard',
       component: AdminComponent,
       canActivate: [authGuard],
-      //data: { role: 'admin' },
+      data: { role: 'admin' },
     },
     {
       path: 'add-translation',

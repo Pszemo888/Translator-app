@@ -8,10 +8,9 @@
         <a routerLink="/register" class="nav-link" routerLinkActive="active">Register</a>
       } @else {
         <a routerLink="/users/profile" class="nav-link" routerLinkActive="active">Profile</a>
-        <!-- @if (authService.isAdmin()) { -->
-          <a routerLink="/admin-dashboard" class="nav-link" routerLinkActive="active">Admin Panel</a>
-          
-        <!-- /} -->
+        @if (authService.isAdmin()) {
+          <a routerLink="/admin-dashboard" class="nav-link" routerLinkActive="active">Admin Panel</a>  
+        }
         <button (click)="logout()" class="nav-link">Logout</button>
       }
     </nav>
