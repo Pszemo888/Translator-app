@@ -16,6 +16,7 @@ export class TranslatorComponent {
   form: FormGroup;
   languages: { code: string; name: string; nativeName: string }[] = []; // <- Deklaracja tej właściwości
   translatedText: string = '';
+  isValidTranslation: boolean = true;
 
   constructor(private fb: FormBuilder, private translationService: TranslationService, private userService: UserService) {
     this.form = this.fb.group({
@@ -39,49 +40,86 @@ export class TranslatorComponent {
     });
   }
 
+  // translate() {
+  //   if (this.form.valid) {
+  //     const { sourceText, sourceLanguage, targetLanguage } = this.form.value;
+  //     const request = { sourceText, sourceLanguage, targetLanguage };
+  
+  //     // Definiowanie nagłówków
+  //     const headers = {
+  //       'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+  //       'Content-Type': 'application/json'
+  //     };
+  
+  //     this.translationService.translateText(request, headers).subscribe({
+  //       next: (response: TranslationResponse) => {
+  //         this.translatedText = response.translatedText;
+  
+  //         const newTranslation: Translation = {
+  //           _id: response._id,
+  //           sourceText: response.sourceText,
+  //           translatedText: response.translatedText,
+  //           sourceLanguage: response.sourceLanguage,
+  //           targetLanguage: response.targetLanguage,
+  //           createdAt: new Date().toISOString()
+  //         };
+  //       },
+  //       error: (err) => {
+  //         console.error('Translation error:', err);
+  //         this.translatedText = 'Translation error occurred';
+  //       }
+  //     });
+  //   }
+  // }
+
   translate() {
     if (this.form.valid) {
       const { sourceText, sourceLanguage, targetLanguage } = this.form.value;
       const request = { sourceText, sourceLanguage, targetLanguage };
   
+      // Pobieranie tokenu z localStorage
+      const authToken = localStorage.getItem('authToken');
+  
       // Definiowanie nagłówków
-      const headers = {
-        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+      const headers: { [key: string]: string } = {
         'Content-Type': 'application/json'
       };
   
+      // Dodawanie nagłówka Authorization, jeśli token istnieje
+      if (authToken) {
+        headers['Authorization'] = `Bearer ${authToken}`;
+      }
+  
+      // Wysyłanie żądania
       this.translationService.translateText(request, headers).subscribe({
         next: (response: TranslationResponse) => {
           this.translatedText = response.translatedText;
-  
-          const newTranslation: Translation = {
-            _id: response._id,
-            sourceText: response.sourceText,
-            translatedText: response.translatedText,
-            sourceLanguage: response.sourceLanguage,
-            targetLanguage: response.targetLanguage,
-            createdAt: new Date().toISOString()
-          };
+          this.isValidTranslation = true;
         },
         error: (err) => {
           console.error('Translation error:', err);
-          this.translatedText = 'Translation error occurred';
+          this.translatedText = '';
+          this.isValidTranslation = false;
         }
       });
     }
   }
+  
   
   swapLanguages() {
     const sourceLanguage = this.form.get('sourceLanguage')?.value;
     const targetLanguage = this.form.get('targetLanguage')?.value;
     const sourceText = this.form.get('sourceText')?.value;
   
+    // Allow swapping languages even with empty fields
     this.form.patchValue({
       sourceLanguage: targetLanguage,
       targetLanguage: sourceLanguage,
-      sourceText: this.translatedText,
+      sourceText: this.translatedText || '', // Use empty string if translatedText is empty
     });
   
+    // Reset translated text and validation state
     this.translatedText = '';
+    this.isValidTranslation = true;
   }
 }

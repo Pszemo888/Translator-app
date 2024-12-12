@@ -1,10 +1,10 @@
 <!-- user.component.html -->
 <div class="profile-container">
     @if (profile) {
-      <h2>User Profile</h2>
+      <h2>Your Profile</h2>
       <div class="profile-info">
         <p><strong>Username:</strong> {{profile.username}}</p>
-        <p><strong>Role:</strong> {{profile.role}}</p>
+        <!-- <p><strong>Role:</strong> {{profile.role}}</p> -->
       </div>
   
       @if (profile.translations.length > 0) {
@@ -13,7 +13,6 @@
           <table>
             <thead>
               <tr>
-                <th>Date</th>
                 <th>Source Text</th>
                 <th>Translated Text</th>
                 <th>From</th>
@@ -23,7 +22,6 @@
             <tbody>
               @for (translation of profile.translations; track translation._id) {
                 <tr>
-                  <td>{{translation.createdAt | date:'medium'}}</td>
                   <td>{{translation.sourceText}}</td>
                   <td>{{translation.translatedText}}</td>
                   <td>{{translation.sourceLanguage}}</td>

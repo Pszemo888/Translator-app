@@ -40,10 +40,11 @@
         </div>
 
         <textarea
-          id="translatedText"
-          readonly
-          [value]="translatedText || ' '"
-        ></textarea>
+        id="translatedText"
+        readonly
+        [value]="translatedText"
+        [placeholder]="!isValidTranslation ? 'Translation not found' : ''"
+      ></textarea>
       </div>
     </div>
 

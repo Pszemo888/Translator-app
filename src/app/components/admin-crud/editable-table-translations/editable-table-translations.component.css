@@ -106,6 +106,15 @@ button:hover {
     margin-bottom: 20px;
 }
 
+select {
+    padding: 8px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+
 
 
     /* #5566c5;
