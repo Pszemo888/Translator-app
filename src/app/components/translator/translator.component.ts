@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { TranslationService } from '../../services/translation.service';
 import { UserService } from '../../services/user.service';
 import { Translation } from '../../models/data.model';
-import  { TranslationResponse } from '../../services/translation.service';
+import { TranslationResponse } from '../../services/translation.service';
+import { HighlightDirective } from '../../directives/highlight.directive';
 @Component({
   selector: 'app-translator',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, HighlightDirective],
   templateUrl: './translator.component.html',
   styleUrls: ['./translator.component.css'],
 })

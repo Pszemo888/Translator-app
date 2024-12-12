@@ -2,11 +2,12 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AdminService } from '../../../services/admin.service';
 import { CommonModule } from '@angular/common';
+import { HighlightDirective } from '../../../directives/highlight.directive';
 
 @Component({
   selector: 'app-add-language',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, HighlightDirective],
   templateUrl: './add-language.component.html',
   styleUrls: ['./add-language.component.css'],
 })
