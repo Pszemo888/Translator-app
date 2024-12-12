@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-
+import { CustomValidators } from '../../validators/custom-validator';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -19,10 +19,12 @@ export class RegisterComponent {
     this.form = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [
+        Validators.required,
+        CustomValidators.passwordLength(8, 20)
+      ]],
     });
   }
-
   register() {
     if (this.form.valid) {
       this.authService.register(this.form.value).subscribe({
