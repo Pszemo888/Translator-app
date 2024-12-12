@@ -20,20 +20,16 @@ type newLanguage = {
   providedIn: 'root'
 })
 export class AdminService {
+
   private apiUrl = 'http://localhost:3000/api';
   private reloadLanguagesSubject = new Subject<void>();
   private reloadTranslationsSubject = new Subject<void>();
+ 
   reloadLanguages$ = this.reloadLanguagesSubject.asObservable();
   reloadTranslations$ = this.reloadTranslationsSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
-  private getAuthHeaders(): HttpHeaders {
-    return new HttpHeaders({
-      Authorization: `Bearer ${localStorage.getItem('authToken')}`,
-      'Content-Type': 'application/json',
-    });
-  }
   triggerReloadLanguages() {
     this.reloadLanguagesSubject.next();
   }
@@ -43,6 +39,7 @@ export class AdminService {
 
   getTranslations(sourceLanguage?: string, targetLanguage?: string):  Observable<Translation[]> {
     let params = new HttpParams();
+   
     if (sourceLanguage) {
       params = params.set('sourceLanguage', sourceLanguage);
     }
@@ -65,7 +62,7 @@ export class AdminService {
 
     return this.http.post<Translation>(`${this.apiUrl}/translations`, translation, { headers });
   }
-  //partial przeslanie tylko czesci danych obiektu
+  
   updateTranslation(id: string, translation: Partial<Translation>): Observable<Translation>{
 
     const headers = new HttpHeaders({
@@ -91,6 +88,7 @@ export class AdminService {
     });
     return this.http.get<Language[]>(`${this.apiUrl}/languages`, { headers });
   }
+
   addLanguage(language: newLanguage): Observable<{ message: string }> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem('authToken')}`,
@@ -99,6 +97,7 @@ export class AdminService {
   
     return this.http.post<{ message: string }>(`${this.apiUrl}/languages`, language, { headers });
   }
+
   deleteLanguage(id: string): Observable<{ message: string }> {
       const headers = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem('authToken')}`,
@@ -106,6 +105,4 @@ export class AdminService {
     });
     return this.http.delete<{ message: string }>(`${this.apiUrl}/languages/${id}`, { headers });
   }
-
-  
 }

@@ -30,19 +30,19 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('authToken'); // Sprawdza obecność tokenu
+    return !!localStorage.getItem('authToken'); 
   }
   isAdmin(): boolean {
     const user = this.getCurrentUser();
-    return user?.role === 'admin'; // Sprawdza, czy użytkownik ma rolę 'admin'
+    return user?.role === 'admin'; 
   }
   
   getCurrentUser(): any {
     const user = localStorage.getItem('currentUser');
-    return user ? JSON.parse(user) : null; // Zwraca dane użytkownika lub null
+    return user ? JSON.parse(user) : null; 
   }
   logout(): void {
-    localStorage.removeItem('authToken'); // Usuń token
-    localStorage.removeItem('currentUser'); // Usuń dane użytkownika
+    localStorage.removeItem('authToken'); 
+    localStorage.removeItem('currentUser'); 
   }
 }

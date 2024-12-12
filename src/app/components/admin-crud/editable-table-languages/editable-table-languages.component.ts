@@ -1,6 +1,6 @@
 import { Component,  OnInit, Output, EventEmitter  } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AdminService } from '../../../services/admin.service';
 import { Language} from '../../../models/data.model';
 

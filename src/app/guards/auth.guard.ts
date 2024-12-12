@@ -1,25 +1,22 @@
-import { Injectable, inject } from '@angular/core';
+import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const authGuard: CanActivateFn = (route) => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  
-  // Sprawdź, czy użytkownik jest zalogowany
   if (!authService.isLoggedIn()) {
     router.navigate(['/login']);
     return false;
   }
-
-  // Opcjonalne sprawdzanie roli (jeśli trasa wymaga określonej roli)
+  
   const requiredRole = route.data['role'];
-  const currentUser = authService.getCurrentUser(); // Metoda zwracająca dane użytkownika
+  const currentUser = authService.getCurrentUser(); 
   if (requiredRole && currentUser.role !== requiredRole) {
     return false;
   }
 
-  return true; // Dostęp przyznany
+  return true; 
 };

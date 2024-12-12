@@ -2,12 +2,11 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AdminService } from '../../../services/admin.service';
 import { CommonModule } from '@angular/common';
-import { HighlightDirective } from '../../../directives/highlight.directive';
 
 @Component({
   selector: 'app-add-language',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, HighlightDirective],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './add-language.component.html',
   styleUrls: ['./add-language.component.css'],
 })
@@ -29,13 +28,12 @@ export class AddLanguageComponent {
   
       this.adminService.addLanguage(newLanguage).subscribe({
         next: (language) => {
-          console.log(language); // Wyświetli wiadomość sukcesu
+          console.log(language); 
           this.form.reset();
-          //this.adminService.triggerReloadTranslations();
           this.adminService.triggerReloadLanguages();
         },
         error: (err) => {
-          console.error('Błąd podczas dodawania języka:', err);
+          console.error('Error adding language:', err);
         },
       });
     }

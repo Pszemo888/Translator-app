@@ -27,13 +27,11 @@ export const routes: Routes = [
       path: 'add-translation',
       component: AddTranslationComponent,
       canActivate: [authGuard],
-      //data: { role: 'admin' },
     },
     {
       path: 'users/profile',
       component: UserComponent,
       canActivate: [authGuard],
-      // data: { role: 'user' || 'admin' }
     },
     {
       path: '',

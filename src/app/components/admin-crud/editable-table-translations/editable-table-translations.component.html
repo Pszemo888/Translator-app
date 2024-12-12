@@ -1,5 +1,4 @@
 <div class="translations-container">
-  
     <h3>Translations list</h3>
     
     <form [formGroup]="editForm">
@@ -27,6 +26,7 @@
           <th></th>
         </tr>
       </thead>
+
       <tbody>
         @for (translation of (showAll ? translations : translations.slice(0, initialDisplayCount)); track translation._id; let i = $index) {
           <tr>
@@ -43,13 +43,16 @@
           </tr>
         }
       </tbody>
+
     </table>
   </form>
+ 
   <div class="toggle-button">
     <button (click)="toggleShowAll()">
       {{ showAll ? 'Show Less' : 'Show More' }}
     </button>
   </div>
+
 </div>
   
 
@@ -83,8 +86,8 @@
         </select>
 
         <div class="dialog-actions">
-          <button (click)="closeDialog()" type="button">Anuluj</button>
-          <button (click)="saveEdit()" type="button">Zapisz</button>
+          <button (click)="closeDialog()" type="button">Cancel</button>
+          <button (click)="saveEdit()" type="button">Save</button>
           
         </div>
         @if (errorMessage) {

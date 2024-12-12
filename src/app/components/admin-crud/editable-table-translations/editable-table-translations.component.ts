@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 export class EditableTableTranslationComponent {
   @Input() languages: Language[] = [];
 
-  public isDialogOpen: boolean = false; // Właściwość publiczna
+  public isDialogOpen: boolean = false; 
   
   showAll: boolean = false;
   initialDisplayCount = 10;
@@ -42,7 +42,7 @@ export class EditableTableTranslationComponent {
       sourceLanguage: ['', [Validators.required, Validators.pattern(/^[A-Za-z]{2}$/)]],
       targetLanguage: ['', [Validators.required, Validators.pattern(/^[A-Za-z]{2}$/)]],
     });
-    this.loadTranslations(); // Pobierz wszystkie tłumaczenia przy starcie
+    this.loadTranslations(); 
   }
 
   ngOnInit(): void {
@@ -51,9 +51,9 @@ export class EditableTableTranslationComponent {
     });
   }
 
-  // Pobierz tłumaczenia z opcjonalnymi filtrami
+  
   loadTranslations() {
-    const { sourceLanguage, targetLanguage } = this.form.value; // Pobierz dane z formularza
+    const { sourceLanguage, targetLanguage } = this.form.value; 
     this.adminService.getTranslations(sourceLanguage, targetLanguage).subscribe({
       next: (translations) => {
         this.translations = translations;
@@ -112,12 +112,12 @@ export class EditableTableTranslationComponent {
     document.body.classList.add('no-scroll');
   }
 
-  closeDialog(): void {         // Metoda publiczna
+  closeDialog(): void {        
     this.isDialogOpen = false;
     this.editingTranslation = null;
     document.body.classList.remove('no-scroll');
   }
-  // Zapisz zmiany w edytowanym tłumaczeniu
+  
   saveEdit() {
     if (this.editForm.valid && this.editingTranslation) {
       const updatedTranslation = this.editForm.value;
@@ -125,7 +125,7 @@ export class EditableTableTranslationComponent {
       this.adminService.updateTranslation(this.editingTranslation._id, updatedTranslation).subscribe({
         next: (updated) => {
           console.log('Zaktualizowano tłumaczenie:', updated);
-          this.loadTranslations(); // Odśwież listę po aktualizacji
+          this.loadTranslations(); 
           this.closeDialog();
           this.errorMessage = null; 
         },
@@ -153,7 +153,7 @@ export class EditableTableTranslationComponent {
     this.adminService.deleteTranslation(id).subscribe({
       next: () => {
         console.log(`Tłumaczenie o ID ${id} zostało usunięte.`);
-        this.loadTranslations(); // Odswież listę po usunięciu
+        this.loadTranslations(); 
       },
       error: (err) => {
         console.error('Błąd podczas usuwania tłumaczenia:', err);

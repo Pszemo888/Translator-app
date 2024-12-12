@@ -1,4 +1,3 @@
-// src/app/services/translation.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -25,14 +24,12 @@ export class TranslationService {
 
   constructor(private http: HttpClient) {}
 
-  // Metoda do tłumaczenia tekstu
   translateText(request: TranslationRequest, customHeaders: { [key: string]: string }): Observable<TranslationResponse> {
     const headers = new HttpHeaders(customHeaders);
   
     return this.http.post<TranslationResponse>(`${this.apiUrl}/translations/translate`, request, { headers });
   }
 
-  // Metoda do pobierania listy języków
   getLanguages(): Observable<{ code: string; name: string; nativeName: string }[]> {
     return this.http.get<{ code: string; name: string; nativeName: string }[]>(`${this.apiUrl}/languages`);
   }

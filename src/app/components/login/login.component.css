@@ -1,4 +1,4 @@
-/* Karta główna */
+
 .card {
     max-width: 500px;
     margin: 40px auto;
@@ -8,7 +8,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
-  /* Nagłówek */
+ 
   .card h2 {
     text-align: center;
     color: #333333;
@@ -16,7 +16,7 @@
     font-size: 24px;
   }
   
-  /* Pola formularza */
+  
   .card form div {
     margin-bottom: 15px;
   }
@@ -38,14 +38,14 @@
     transition: border-color 0.3s, box-shadow 0.3s;
   }
   
-  /* Efekt focus na polach */
+  
   .card input:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     outline: none;
   }
   
-  /* Przycisk */
+ 
   .card button {
     width: 100%;
     padding: 12px;
@@ -59,20 +59,20 @@
     transition: background-color 0.3s, transform 0.2s;
   }
   
-  /* Efekt hover na przycisku */
+ 
   .card button:hover {
     background-color: #5c6cc5;
     color: #a4aacd;
   }
   
-  /* Wyłączenie przycisku */
+  
   .card button:disabled {
     background-color: #a4aacd;
     cursor: not-allowed;
     color: #5c6cc5;
   }
   
-  /* Wiadomości sukcesu i błędów */
+ 
   .card .success {
     color: #28a745;
     font-size: 14px;
@@ -87,7 +87,7 @@
     margin-bottom: 10px;
   }
   
-  /* Ukryte wiadomości */
+  
   .hidden {
     display: none;
   }

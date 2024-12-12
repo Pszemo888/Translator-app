@@ -1,10 +1,8 @@
-<!-- user.component.html -->
 <div class="profile-container">
     @if (profile) {
       <h2>Your Profile</h2>
       <div class="profile-info">
         <p><strong>Username:</strong> {{profile.username}}</p>
-        <!-- <p><strong>Role:</strong> {{profile.role}}</p> -->
       </div>
   
       @if (profile.translations.length > 0) {

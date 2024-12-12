@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { TranslationService } from '../../services/translation.service';
 import { UserService } from '../../services/user.service';
-import { Translation } from '../../models/data.model';
 import { TranslationResponse } from '../../services/translation.service';
 import { HighlightDirective } from '../../directives/highlight.directive';
 @Component({
@@ -15,7 +14,7 @@ import { HighlightDirective } from '../../directives/highlight.directive';
 })
 export class TranslatorComponent {
   form: FormGroup;
-  languages: { code: string; name: string; nativeName: string }[] = []; // <- Deklaracja tej właściwości
+  languages: { code: string; name: string; nativeName: string }[] = []; 
   translatedText: string = '';
   isValidTranslation: boolean = true;
 
@@ -26,14 +25,13 @@ export class TranslatorComponent {
       targetLanguage: ['', Validators.required],
     });
 
-    this.loadLanguages(); // Załaduj języki podczas inicjalizacji komponentu
+    this.loadLanguages(); 
   }
 
-  // Pobierz dostępne języki
   loadLanguages() {
     this.translationService.getLanguages().subscribe({
       next: (langs) => {
-        this.languages = langs; // Przypisanie języków do właściwości languages
+        this.languages = langs; 
       },
       error: (err) => {
         console.error('Błąd podczas pobierania języków:', err);
@@ -41,57 +39,21 @@ export class TranslatorComponent {
     });
   }
 
-  // translate() {
-  //   if (this.form.valid) {
-  //     const { sourceText, sourceLanguage, targetLanguage } = this.form.value;
-  //     const request = { sourceText, sourceLanguage, targetLanguage };
-  
-  //     // Definiowanie nagłówków
-  //     const headers = {
-  //       'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
-  //       'Content-Type': 'application/json'
-  //     };
-  
-  //     this.translationService.translateText(request, headers).subscribe({
-  //       next: (response: TranslationResponse) => {
-  //         this.translatedText = response.translatedText;
-  
-  //         const newTranslation: Translation = {
-  //           _id: response._id,
-  //           sourceText: response.sourceText,
-  //           translatedText: response.translatedText,
-  //           sourceLanguage: response.sourceLanguage,
-  //           targetLanguage: response.targetLanguage,
-  //           createdAt: new Date().toISOString()
-  //         };
-  //       },
-  //       error: (err) => {
-  //         console.error('Translation error:', err);
-  //         this.translatedText = 'Translation error occurred';
-  //       }
-  //     });
-  //   }
-  // }
-
   translate() {
     if (this.form.valid) {
       const { sourceText, sourceLanguage, targetLanguage } = this.form.value;
       const request = { sourceText, sourceLanguage, targetLanguage };
   
-      // Pobieranie tokenu z localStorage
       const authToken = localStorage.getItem('authToken');
-  
-      // Definiowanie nagłówków
+
       const headers: { [key: string]: string } = {
         'Content-Type': 'application/json'
       };
   
-      // Dodawanie nagłówka Authorization, jeśli token istnieje
       if (authToken) {
         headers['Authorization'] = `Bearer ${authToken}`;
       }
   
-      // Wysyłanie żądania
       this.translationService.translateText(request, headers).subscribe({
         next: (response: TranslationResponse) => {
           this.translatedText = response.translatedText;
@@ -112,14 +74,12 @@ export class TranslatorComponent {
     const targetLanguage = this.form.get('targetLanguage')?.value;
     const sourceText = this.form.get('sourceText')?.value;
   
-    // Allow swapping languages even with empty fields
     this.form.patchValue({
       sourceLanguage: targetLanguage,
       targetLanguage: sourceLanguage,
-      sourceText: this.translatedText || '', // Use empty string if translatedText is empty
+      sourceText: this.translatedText || '', 
     });
   
-    // Reset translated text and validation state
     this.translatedText = '';
     this.isValidTranslation = true;
   }

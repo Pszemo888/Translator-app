@@ -31,7 +31,7 @@ export class LoginComponent {
           if (response.user.role === 'admin') {
             this.router.navigate(['/admin-dashboard']);
           } else {
-            this.router.navigate(['/translator']); // Dostosuj trasę dla użytkownika
+            this.router.navigate(['/translator']); 
           }
       
         },
@@ -49,5 +49,5 @@ export class LoginComponent {
     } else {
       this.errorMessage = 'Please fill in all required fields.';
     }
-}
+  }
 }

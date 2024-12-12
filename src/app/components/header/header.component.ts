@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'], // Poprawiono 'styleUrl' na 'styleUrls'
+  styleUrls: ['./header.component.css'], 
 })
 export class HeaderComponent {
   

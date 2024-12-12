@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./add-translation.component.css']
 })
 export class AddTranslationComponent {
-  @Output() translationAdded = new EventEmitter<Translation>(); // Emituj zdarzenie po dodaniu
+  @Output() translationAdded = new EventEmitter<Translation>(); 
   form: FormGroup;
 
   constructor(private fb: FormBuilder, private adminService: AdminService) {
@@ -31,8 +31,8 @@ export class AddTranslationComponent {
       this.adminService.addTranslation(newTranslation).subscribe({
         next: (translation) => {
           console.log('Dodano tłumaczenie:', translation);
-          this.translationAdded.emit(translation); // Emituj zdarzenie do rodzica
-          this.form.reset(); // Resetuj formularz po udanym dodaniu
+          this.translationAdded.emit(translation); 
+          this.form.reset(); 
           this.adminService.triggerReloadTranslations();
         },
         error: (err) => {

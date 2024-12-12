@@ -8,7 +8,7 @@ import { CustomValidators } from '../../validators/custom-validator';
   standalone: true,
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  imports: [ReactiveFormsModule], // Import ReactiveFormsModule
+  imports: [ReactiveFormsModule], 
 })
 export class RegisterComponent {
   form: FormGroup;
